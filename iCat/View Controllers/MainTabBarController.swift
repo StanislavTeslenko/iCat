@@ -13,16 +13,15 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = .mainViolet()
+//        tabBar.tintColor = .mainViolet()
         
-        let randomImageViewController = RandomImageViewController()
         let breedsListViewController = BreedsListViewController()
+        let randomImageViewController = RandomImageViewController()
         
-        let randomImage = UIImage(named: "random-regular")!
-        let breedImage = UIImage(named: "breeds-regular")!
+        let breedImage = UIImage(named: "list")!
+        let randomImage = UIImage(named: "random")!
         
-        viewControllers = [generateNavigationController(rootViewController: randomImageViewController, title: "Random", image: randomImage),
-        generateNavigationController(rootViewController: breedsListViewController, title: "Breeds", image: breedImage)]
+        viewControllers = [generateNavigationController(rootViewController: breedsListViewController, title: "Breeds", image: breedImage), generateNavigationController(rootViewController: randomImageViewController, title: "Random", image: randomImage)]
     }
 }
 

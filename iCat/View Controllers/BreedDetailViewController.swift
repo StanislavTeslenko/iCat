@@ -31,7 +31,7 @@ class BreedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.9725490196, blue: 0.9921568627, alpha: 1)
+        view.backgroundColor = .mainBGColor()
         
         setupDragView()
         setupCollectionView()
@@ -69,7 +69,7 @@ extension BreedDetailViewController {
      
         let width: CGFloat = view.bounds.width / 4
         dragView.layer.cornerRadius = 3
-        dragView.backgroundColor = .mainViolet()
+        dragView.backgroundColor = .mainTextColor()
         dragView.translatesAutoresizingMaskIntoConstraints = false
         
         let margins = view.layoutMarginsGuide
@@ -86,7 +86,7 @@ extension BreedDetailViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .mainWhite()
+        collectionView.backgroundColor = .mainBGColor()
         
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.reuseId)
         
@@ -104,7 +104,7 @@ extension BreedDetailViewController {
         
         descriptionView = DescriptionScrollView(frame: view.frame)
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView.backgroundColor = .mainWhite()
+        descriptionView.backgroundColor = .mainBGColor()
 
         view.addSubview(descriptionView)
         
@@ -176,6 +176,7 @@ extension BreedDetailViewController {
                     fatalError("Unable to dequeue cell type")
                 }
                 cell.configure(with: item)
+                cell.layoutIfNeeded()
                 return cell
             }
         })

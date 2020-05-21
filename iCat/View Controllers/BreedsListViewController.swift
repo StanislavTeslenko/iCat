@@ -31,9 +31,9 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.title = "World of cats"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!,NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
         
-        view.backgroundColor = .mainWhite()
+        view.backgroundColor = .mainBGColor()
         
         BreedDataSource.shared.delegate = self
         
@@ -47,9 +47,7 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setupSearchBarColors()
-    }
+
     
     fileprivate func loadBreedCellData() {
         
@@ -101,7 +99,7 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
 extension BreedsListViewController {
     
     fileprivate func setupNavigationController() {
-        navigationController?.navigationBar.barTintColor = .mainWhite()
+        navigationController?.navigationBar.barTintColor = .mainBGColor()
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
@@ -116,32 +114,15 @@ extension BreedsListViewController {
         searchController.searchBar.delegate = self
     }
     
-    fileprivate func setupSearchBarColors() {
-        
-        let searchController = navigationItem.searchController!
-        
-        // Setup searchBar indicator color
-        searchController.searchBar.tintColor = .mainViolet()
-        // Setup searchBar search text and placeholder color
-        searchController.searchBar.searchTextField.textColor = .mainViolet()
-        searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search breed", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7311726613, green: 0.6135759854, blue: 0.9686274529, alpha: 1)])
-        // Setup searchBar left search icon color
-        searchController.searchBar.searchTextField.leftView?.tintColor = .mainViolet()
-        // Setup searchBar right clear button icon
-        let clearButton = searchController.searchBar.searchTextField.value(forKey: "clearButton") as! UIButton
-        clearButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        clearButton.tintColor = .mainViolet()
-    }
-    
     fileprivate func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .mainWhite()
+        collectionView.backgroundColor = .mainBGColor()
         collectionView.alwaysBounceVertical = true
         
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(pullToRefreshData), for: .valueChanged)
-        refreshControl.tintColor = .mainViolet()
+        refreshControl.tintColor = .mainTextColor()
         
         view.addSubview(collectionView)
         
@@ -230,6 +211,10 @@ extension BreedsListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        reloadData(with: nil)
     }
     
 }

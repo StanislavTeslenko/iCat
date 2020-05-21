@@ -11,6 +11,7 @@ import UIKit
 class BreedCell: UICollectionViewCell {
 
     fileprivate let breedImageView = UIImageView()
+    fileprivate let breedBlurImageView = UIImageView()
     fileprivate let breedNameLabel = UILabel()
     fileprivate let containerView = UIView()
     
@@ -30,10 +31,12 @@ class BreedCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         
         self.breedImageView.contentMode = .scaleAspectFit
+        self.breedBlurImageView.contentMode = .center
+        self.breedBlurImageView.clipsToBounds = true
         self.breedNameLabel.textAlignment = .center
         
-        self.breedNameLabel.textColor = .mainViolet()
-        self.breedNameLabel.font = .avenir20()
+        self.breedNameLabel.textColor = #colorLiteral(red: 0.968627451, green: 0.9725490196, blue: 0.9921568627, alpha: 1)
+        self.breedNameLabel.font = .avenir20Medium()
         self.breedNameLabel.adjustsFontSizeToFitWidth = true
         self.breedNameLabel.minimumScaleFactor = 0.5
     }
@@ -44,14 +47,21 @@ class BreedCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         breedImageView.image = nil
+        breedBlurImageView.image = nil
         breedNameLabel.text = nil
     }
     
     func configure(with value: BreedCellModel) {
-        if let image = value.breedImages.first {
+        
+        if let image = value.breedAvatar {
             breedImageView.image = image
         } else {
             breedImageView.image = UIImage(named: "schr-cat")
+        }
+        
+        if let image = value.breedImages.first {
+            let bluredImage = image?.blurImage(blurAmount: 10)
+            breedBlurImageView.image = bluredImage
         }
         
         breedNameLabel.text = value.breed.name
@@ -71,10 +81,12 @@ extension BreedCell {
     
     fileprivate func setupConstraints() {
         breedImageView.translatesAutoresizingMaskIntoConstraints = false
+        breedBlurImageView.translatesAutoresizingMaskIntoConstraints = false
         breedNameLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(containerView)
+        containerView.addSubview(breedBlurImageView)
         containerView.addSubview(breedImageView)
         containerView.addSubview(breedNameLabel)
         
@@ -86,10 +98,16 @@ extension BreedCell {
         ])
         
         NSLayoutConstraint.activate([
+            breedBlurImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            breedBlurImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            breedBlurImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            breedBlurImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
             breedImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
             breedImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            breedImageView.heightAnchor.constraint(equalTo: containerView.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([

@@ -19,9 +19,9 @@ class RandomImageViewController: UIViewController, RandomImageDataSourceDelegate
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.title = "Random cat"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
         
-        view.backgroundColor = .mainWhite()
+        view.backgroundColor = .mainBGColor()
         
         //        Add ImageScrollView class into view and configure it
         imageScrollView = ImageScrollView(frame: view.bounds)

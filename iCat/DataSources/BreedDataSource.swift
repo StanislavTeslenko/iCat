@@ -95,10 +95,10 @@ extension BreedDataSource {
                     self.dataFetcherService.fetchImage(urlString: imageUrlString) { (image) in
                         let loadedImage: UIImage!
                         if let image = image {
-                              loadedImage = image
+                            loadedImage = image
                         } else {
                               loadedImage = UIImage(named: "schr-cat")}
-                        let breedCell = BreedCellModel(breed: breed, breedImages: [loadedImage])
+                        let breedCell = BreedCellModel(breed: breed, breedAvatar: loadedImage.aspectFittedToHeight(150) ,breedImages: [loadedImage.aspectFittedToHeight(350)])
                         // Check breed array for prevent duplicating
                         if self.breedCells.contains(where: {$0?.breed.id == breed.id}) == false {
                             self.breedCells.append(breedCell)
@@ -132,7 +132,7 @@ extension BreedDataSource {
                     if !imageUrlArray.contains(imageUrlString) {
                         imageUrlArray.append(imageUrlString)
                         self.dataFetcherService.fetchImage(urlString: imageUrlString) { (image) in
-                            completion(image)
+                            completion(image?.aspectFittedToHeight(350))
                         }
                     }
                 }

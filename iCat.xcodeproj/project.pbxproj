@@ -31,6 +31,8 @@
 		0484DF3B2465926100FFB611 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484DF3A2465926100FFB611 /* UIColor + Extension.swift */; };
 		0484DF3F24695AC700FFB611 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484DF3E24695AC700FFB611 /* ImageCell.swift */; };
 		0484DF4124730EC700FFB611 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484DF4024730EC700FFB611 /* UILabel + Extension.swift */; };
+		04D0046F24769DD100A4DF17 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0046E24769DD100A4DF17 /* LoadingViewController.swift */; };
+		04D004712476C08200A4DF17 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D004702476C08200A4DF17 /* UIImage + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		0484DF3A2465926100FFB611 /* UIColor + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		0484DF3E24695AC700FFB611 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		0484DF4024730EC700FFB611 /* UILabel + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		04D0046E24769DD100A4DF17 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		04D004702476C08200A4DF17 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 		0404331B245C377900EE121A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04D0046E24769DD100A4DF17 /* LoadingViewController.swift */,
 				042DFC402464429400EA1B56 /* MainTabBarController.swift */,
 				0404331C245C379B00EE121A /* RandomImageViewController.swift */,
 				042DFC3A2463FE2900EA1B56 /* BreedsListViewController.swift */,
@@ -213,6 +218,7 @@
 				0484DF382465925A00FFB611 /* UIFont + Extension.swift */,
 				0484DF4024730EC700FFB611 /* UILabel + Extension.swift */,
 				0484DF3A2465926100FFB611 /* UIColor + Extension.swift */,
+				04D004702476C08200A4DF17 /* UIImage + Extension.swift */,
 			);
 			path = "UIKit + Extensions";
 			sourceTree = "<group>";
@@ -303,10 +309,12 @@
 				0484DF3B2465926100FFB611 /* UIColor + Extension.swift in Sources */,
 				042DFC442464447A00EA1B56 /* BreedCell.swift in Sources */,
 				045E22392460734E00CAF2CE /* ImageScrollView.swift in Sources */,
+				04D004712476C08200A4DF17 /* UIImage + Extension.swift in Sources */,
 				04043323245C423900EE121A /* NetworkDataFetcher.swift in Sources */,
 				042DFC412464429400EA1B56 /* MainTabBarController.swift in Sources */,
 				045E2236245C4D0000CAF2CE /* RandomImageDataSource.swift in Sources */,
 				042DFC3D246407BB00EA1B56 /* BreedModel.swift in Sources */,
+				04D0046F24769DD100A4DF17 /* LoadingViewController.swift in Sources */,
 				0484DF3424654CE500FFB611 /* BreedDetailViewController.swift in Sources */,
 				042DFC3B2463FE2900EA1B56 /* BreedsListViewController.swift in Sources */,
 			);

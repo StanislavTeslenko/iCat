@@ -34,6 +34,7 @@ struct BreedWithImageUrlModel: Codable {
 struct BreedCellModel: Hashable {
     
     var breed: BreedModel
+    var breedAvatar: UIImage?
     var breedImages: [UIImage?]
     let uuid = UUID()
     

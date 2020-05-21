@@ -27,7 +27,7 @@ final class ImageScrollView: UIScrollView {
         self.decelerationRate = UIScrollView.DecelerationRate.fast
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.tintColor = .mainViolet()
+        self.refreshControl?.tintColor = .mainTextColor()
     }
     
     required init?(coder: NSCoder) {

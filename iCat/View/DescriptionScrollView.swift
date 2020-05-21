@@ -29,7 +29,7 @@ final class DescriptionScrollView: UIScrollView {
         self.showsHorizontalScrollIndicator = false
         self.decelerationRate = UIScrollView.DecelerationRate.fast
         
-        self.backgroundColor = .blue
+        self.backgroundColor = .mainBGColor()
         
         configureElements()
     }
@@ -43,7 +43,7 @@ extension DescriptionScrollView {
     
     fileprivate func configureElements() {
         
-        nameLabel = UILabel(text: "Breed Name", font: .avenir26())
+        nameLabel = UILabel(text: "Breed Name", font: .avenir26Medium())
         descriptionLabel = UILabel(text: "Breed Description")
         delimeterLabel = UILabel(text: "---")
         temperamentLabel = UILabel(text: "Breed Temperament")
@@ -63,6 +63,7 @@ extension DescriptionScrollView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         descriptionLabel.numberOfLines = 0
+        
         temperamentLabel.numberOfLines = 0
         
         self.addSubview(stackView)
