@@ -117,8 +117,8 @@ extension BreedDataSource {
             completion(nil)
             return}
         
-        // Concatenate base Url and breed Id for get breed images via API with limit 100
-        let breedUrlString = self.searchBaseUrlString + breedId + "&limit=100"
+        // Concatenate base Url and breed Id for get breed images via API with limit 10
+        let breedUrlString = self.searchBaseUrlString + breedId + "&limit=10"
         
         // Get API data: Get JSON Breed with image
         self.dataFetcherService.fetchNetworkData(urlString: breedUrlString) { (data: [BreedWithImageUrlModel]?) in
