@@ -46,17 +46,14 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         loadBreedCellData()
         
     }
-    
 
-    
     fileprivate func loadBreedCellData() {
         
         let isDataReady = BreedDataSource.shared.checkDataReady()
         
         if isDataReady != nil {
-            collectionView.refreshControl?.beginRefreshing()
             breeds = BreedDataSource.shared.getBreedCellData()
-            reloadData(with: nil)
+            reloadData(with: nil, sorted: false)
         }
     }
     
@@ -70,12 +67,14 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         }
     }
     
-    func refreshCells() {
+    func newCellLoaded() {
         breeds = BreedDataSource.shared.getBreedCellData()
-        reloadData(with: nil)
+        reloadData(with: nil, sorted: false)
     }
     
-    func endRefreshing() {
+    func loadComplete() {
+        breeds = BreedDataSource.shared.getBreedCellData()
+        reloadData(with: nil, sorted: true)
         collectionView.refreshControl?.endRefreshing()
     }
     
@@ -188,9 +187,13 @@ extension BreedsListViewController {
         })
     }
     
-    fileprivate func reloadData(with searchText: String?) {
+    fileprivate func reloadData(with searchText: String?, sorted: Bool) {
         
-        var breedArray = breeds.compactMap{$0}.sorted(by: {$1.breed.name! > $0.breed.name!})
+        var breedArray = breeds.compactMap{$0}
+        
+        if sorted {
+            breedArray = breeds.compactMap{$0}.sorted(by: {$1.breed.name! > $0.breed.name!})
+        }
         
         if searchText != nil && searchText != "" {
         breedArray = breedArray.filter ({ (breed) in
@@ -210,11 +213,11 @@ extension BreedsListViewController {
 extension BreedsListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        reloadData(with: searchText)
+        reloadData(with: searchText, sorted: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        reloadData(with: nil)
+        reloadData(with: nil, sorted: true)
     }
     
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol BreedDataSourceDelegate: class {
-    func refreshCells()
-    func endRefreshing()
+    func newCellLoaded()
+    func loadComplete()
     func loadingError()
 }
 
@@ -26,14 +26,14 @@ class BreedDataSource {
     
     fileprivate var breedCells: [BreedCellModel?] = [] {
         didSet {
-            delegate?.refreshCells()
+            delegate?.newCellLoaded()
         }
     }
     
     fileprivate var isDataReady: Bool? {
         didSet {
             if isDataReady != nil && isDataReady == true {
-                delegate?.endRefreshing()
+                delegate?.loadComplete()
             }
         }
     }

@@ -13,6 +13,7 @@ class BreedCell: UICollectionViewCell {
     fileprivate let breedImageView = UIImageView()
     fileprivate let breedBlurImageView = UIImageView()
     fileprivate let breedNameLabel = UILabel()
+    fileprivate let nameBackgroundView = UIView()
     fileprivate let containerView = UIView()
     
     static let reuseId: String = "BreedCell"
@@ -43,7 +44,8 @@ class BreedCell: UICollectionViewCell {
         self.breedNameLabel.adjustsFontSizeToFitWidth = true
         self.breedNameLabel.minimumScaleFactor = 0.5
         self.breedNameLabel.textAlignment = .center
-        self.breedNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        
+        self.nameBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     required init?(coder: NSCoder) {
@@ -88,11 +90,13 @@ extension BreedCell {
         breedImageView.translatesAutoresizingMaskIntoConstraints = false
         breedBlurImageView.translatesAutoresizingMaskIntoConstraints = false
         breedNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(containerView)
         containerView.addSubview(breedBlurImageView)
         containerView.addSubview(breedImageView)
+        containerView.addSubview(nameBackgroundView)
         containerView.addSubview(breedNameLabel)
         
         NSLayoutConstraint.activate([
@@ -116,11 +120,25 @@ extension BreedCell {
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
         ])
         
+//        NSLayoutConstraint.activate([
+//            nameBackgroundView.heightAnchor.constraint(equalToConstant: 40),
+//            nameBackgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+//            nameBackgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//            nameBackgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+//        ])
+        
+        NSLayoutConstraint.activate([
+            nameBackgroundView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            nameBackgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            nameBackgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            nameBackgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+        ])
+        
         NSLayoutConstraint.activate([
             breedNameLabel.heightAnchor.constraint(equalToConstant: 40),
             breedNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            breedNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            breedNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+            breedNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
+            breedNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5)
         ])
     }
 }

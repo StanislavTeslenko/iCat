@@ -98,7 +98,7 @@ extension DescriptionScrollView {
         descriptionLabel.text = breed.breed.description
         temperamentLabel.text = breed.breed.temperament
         originLabel.text = breed.breed.origin
-        weightLabel.text = (breed.breed.weight?.metric ?? "n/a") + " kgs"
-        lifespanLabel.text = (breed.breed.life_span ?? "n/a") + " average life span"
+        weightLabel.text = breed.breed.weight?.metric?.appending(" kgs")
+        lifespanLabel.text = breed.breed.life_span?.appending(" average life span")
     }
 }
