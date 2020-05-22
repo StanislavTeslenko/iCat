@@ -52,6 +52,7 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         let isDataReady = BreedDataSource.shared.checkDataReady()
         
         if isDataReady != nil {
+            collectionView.refreshControl?.beginRefreshing()
             breeds = BreedDataSource.shared.getBreedCellData()
             reloadData(with: nil, sorted: false)
         }
