@@ -2,7 +2,7 @@
 Test application for MacPaw macOS/iOS Internship
 
 ## Description
-Application use public API https://thecatapi.com .
+Application use public API https://thecatapi.com for two possibilities - show random image and show breed catalog.
 Implemented light and dark themes.
 
 ### Light theme
