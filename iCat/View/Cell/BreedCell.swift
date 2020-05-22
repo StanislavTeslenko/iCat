@@ -23,13 +23,16 @@ class BreedCell: UICollectionViewCell {
         backgroundColor = .white
         setupConstraints()
         
-        self.layer.cornerRadius = 4
+        self.layer.cornerRadius = 7
         
+        // Create cell shadow
+/*
+        self.layer.cornerRadius = 4
         self.layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        
+*/
         self.breedImageView.contentMode = .scaleAspectFit
         self.breedBlurImageView.contentMode = .center
         self.breedBlurImageView.clipsToBounds = true
@@ -39,6 +42,8 @@ class BreedCell: UICollectionViewCell {
         self.breedNameLabel.font = .avenir20Medium()
         self.breedNameLabel.adjustsFontSizeToFitWidth = true
         self.breedNameLabel.minimumScaleFactor = 0.5
+        self.breedNameLabel.textAlignment = .center
+        self.breedNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     required init?(coder: NSCoder) {
@@ -69,8 +74,8 @@ class BreedCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.containerView.layer.cornerRadius = 4
+
+        self.containerView.layer.cornerRadius = 6
         self.containerView.clipsToBounds = true
     }
     
@@ -106,15 +111,16 @@ extension BreedCell {
         
         NSLayoutConstraint.activate([
             breedImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            breedImageView.bottomAnchor.constraint(equalTo: breedNameLabel.topAnchor),
             breedImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            breedNameLabel.topAnchor.constraint(equalTo: breedImageView.bottomAnchor),
+            breedNameLabel.heightAnchor.constraint(equalToConstant: 40),
             breedNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            breedNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            breedNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8)
+            breedNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            breedNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
     }
 }

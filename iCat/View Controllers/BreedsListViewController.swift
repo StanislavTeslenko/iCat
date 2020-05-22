@@ -31,7 +31,7 @@ class BreedsListViewController: UIViewController, UICollectionViewDelegate,Breed
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.title = "World of cats"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!,NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!,NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)!]
         
         view.backgroundColor = .mainBGColor()
         

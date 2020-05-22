@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,14 +23,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iCatLogo" translatesAutoresizingMaskIntoConstraints="NO" id="T7X-Bk-7yR">
-                                <rect key="frame" x="112.66666666666669" y="336" width="150" height="150"/>
+                                <rect key="frame" x="122.66666666666669" y="346" width="130" height="130"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="NDy-wq-Ofz"/>
-                                    <constraint firstAttribute="height" constant="150" id="bOO-0p-uOJ"/>
+                                    <constraint firstAttribute="width" constant="130" id="NDy-wq-Ofz"/>
+                                    <constraint firstAttribute="height" constant="130" id="bOO-0p-uOJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="T7X-Bk-7yR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4wN-Gy-sHU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DEm-8p-XoB" secondAttribute="bottom" constant="16" id="7q5-2E-YpI"/>
@@ -47,5 +48,8 @@
     </scenes>
     <resources>
         <image name="iCatLogo" width="64" height="55.333332061767578"/>
+        <namedColor name="MainBackgroundColor">
+            <color red="0.96899998188018799" green="0.97299998998641968" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -12,6 +12,7 @@ class RandomImageViewController: UIViewController, RandomImageDataSourceDelegate
     
     fileprivate let dataSource = RandomImageDataSource()
     fileprivate var imageScrollView: ImageScrollView!
+    fileprivate let swipeDescriptionView = SwipeDescriptionView()
     fileprivate var recivedImage: UIImage!
     fileprivate var isLoaded = false
     
@@ -19,13 +20,13 @@ class RandomImageViewController: UIViewController, RandomImageDataSourceDelegate
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.title = "Random cat"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 26)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "MainTextColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)!]
         
         view.backgroundColor = .mainBGColor()
         
+        setupAuxElements()
+        
         //        Add ImageScrollView class into view and configure it
-        imageScrollView = ImageScrollView(frame: view.bounds)
-        view.addSubview(imageScrollView)
         setupImageScrollView()
         
         //        Add RefreshControl action into ImageScrollView class
@@ -38,66 +39,90 @@ class RandomImageViewController: UIViewController, RandomImageDataSourceDelegate
         
     }
     
-    //    Setup ImageScrollView
-    fileprivate func setupImageScrollView() {
-        
-        imageScrollView.translatesAutoresizingMaskIntoConstraints = false
-        let margins = view.layoutMarginsGuide
-        
-        NSLayoutConstraint.activate([
-            imageScrollView.topAnchor.constraint(equalTo: margins.topAnchor),
-            imageScrollView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
-            imageScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-    }
-    
-    //MARK: - RandomImageDataSourceDelegate
-    
-    func dataReady(image: UIImage?) {
-        
-        //        Loaded data processing
-        if let image = image {
-            self.recivedImage = image
-            isLoaded = true
-            //    Stop RefreshControl
-            self.imageScrollView.refreshControl?.endRefreshing()
-        } else {
-            loadingAlert()
-            if !isLoaded {
-                self.recivedImage = UIImage(named: "schr-cat")
-            }
-        }
-        
-        //    Transfer loaded image into ImageScrollView
-        imageScrollView.set(image: self.recivedImage)
-        
-    }
-    
-    //MARK: - RefreshControl action
+//MARK: - RefreshControl action
     
     @objc fileprivate func refresh(_ sender: AnyObject) {
         dataSource.loadNetworkData()
+        swipeDescriptionView.isHidden = true
     }
     
-    //    MARK: - NotificationCenter selector
-    
-    @objc fileprivate func rotated() {
-        if isLoaded {
-            imageScrollView.set(image: self.recivedImage)
-        }
-    }
-    
-    //    MARK: - Alert Controller
+//    MARK: - Alert Controller
     
     fileprivate func loadingAlert() {
         let alertController = UIAlertController(title: "Sorry!", message: "We can't load the cat's image :( Please check the internet connection and try again!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             //    Stop RefreshControl
             self.imageScrollView.refreshControl?.endRefreshing()
+            self.swipeDescriptionView.isHidden = false
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
-    
 }
+  
+
+// MARK: - Setup Elements
+
+extension RandomImageViewController {
+    
+    fileprivate func setupAuxElements() {
+        
+        swipeDescriptionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(swipeDescriptionView)
+        
+        let margins = view.layoutMarginsGuide
+        
+        NSLayoutConstraint.activate([
+            swipeDescriptionView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -10),
+            swipeDescriptionView.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+//            swipeDescriptionView.heightAnchor.constraint(equalToConstant: 40),
+//            swipeDescriptionView.widthAnchor.constraint(equalToConstant: 150)
+        ])
+        
+    }
+    
+    //    Setup ImageScrollView
+    fileprivate func setupImageScrollView() {
+        
+        imageScrollView = ImageScrollView(frame: view.bounds)
+        imageScrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(imageScrollView)
+        
+        let margins = view.layoutMarginsGuide
+        
+        NSLayoutConstraint.activate([
+            imageScrollView.topAnchor.constraint(equalTo: margins.topAnchor),
+            imageScrollView.bottomAnchor.constraint(equalTo: swipeDescriptionView.topAnchor, constant: -10),
+            imageScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}
+    
+//MARK: - RandomImageDataSourceDelegate
+    
+extension RandomImageViewController {
+    
+    func dataReady(image: UIImage?) {
+        
+        // Loaded data processing
+        if let image = image {
+            self.recivedImage = image
+            isLoaded = true
+            //    Stop RefreshControl
+            self.imageScrollView.refreshControl?.endRefreshing()
+            swipeDescriptionView.isHidden = false
+        } else {
+            loadingAlert()
+            if !isLoaded {
+                self.recivedImage = UIImage(named: "schr-cat")
+            }
+        }
+        // Transfer loaded image into ImageScrollView
+        imageScrollView.set(image: self.recivedImage)
+    }
+}
+
+

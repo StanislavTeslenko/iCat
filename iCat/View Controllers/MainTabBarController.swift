@@ -22,6 +22,9 @@ class MainTabBarController: UITabBarController {
         let randomImage = UIImage(named: "random")!
         
         viewControllers = [generateNavigationController(rootViewController: breedsListViewController, title: "Breeds", image: breedImage), generateNavigationController(rootViewController: randomImageViewController, title: "Random", image: randomImage)]
+    
+        self.tabBar.tintColor = .mainTextColor()
+    
     }
 }
 

@@ -59,7 +59,7 @@ extension LoadingViewController {
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 150),
+            logoImageView.widthAnchor.constraint(equalToConstant: 130),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor)
         ])
         
