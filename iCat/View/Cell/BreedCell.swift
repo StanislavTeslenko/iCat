@@ -25,15 +25,7 @@ class BreedCell: UICollectionViewCell {
         setupConstraints()
         
         self.layer.cornerRadius = 7
-        
-        // Create cell shadow
-/*
-        self.layer.cornerRadius = 4
-        self.layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-*/
+
         self.breedImageView.contentMode = .scaleAspectFit
         self.breedBlurImageView.contentMode = .center
         self.breedBlurImageView.clipsToBounds = true
@@ -84,6 +76,7 @@ class BreedCell: UICollectionViewCell {
 }
 
 //MARK: - Setup Constraints
+
 extension BreedCell {
     
     fileprivate func setupConstraints() {
@@ -119,13 +112,6 @@ extension BreedCell {
             breedImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
         ])
-        
-//        NSLayoutConstraint.activate([
-//            nameBackgroundView.heightAnchor.constraint(equalToConstant: 40),
-//            nameBackgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-//            nameBackgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            nameBackgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-//        ])
         
         NSLayoutConstraint.activate([
             nameBackgroundView.topAnchor.constraint(equalTo: containerView.topAnchor),

@@ -24,7 +24,6 @@
 		042DFC412464429400EA1B56 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DFC402464429400EA1B56 /* MainTabBarController.swift */; };
 		042DFC442464447A00EA1B56 /* BreedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DFC432464447A00EA1B56 /* BreedCell.swift */; };
 		043A724E2477DA4B00E15B56 /* SwipeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A724D2477DA4B00E15B56 /* SwipeDescriptionView.swift */; };
-		043A72502477FB3C00E15B56 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A724F2477FB3C00E15B56 /* temp.swift */; };
 		045E2236245C4D0000CAF2CE /* RandomImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E2235245C4D0000CAF2CE /* RandomImageDataSource.swift */; };
 		045E22392460734E00CAF2CE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E22382460734E00CAF2CE /* ImageScrollView.swift */; };
 		0484DF3424654CE500FFB611 /* BreedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484DF3324654CE500FFB611 /* BreedDetailViewController.swift */; };
@@ -57,7 +56,6 @@
 		042DFC402464429400EA1B56 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		042DFC432464447A00EA1B56 /* BreedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedCell.swift; sourceTree = "<group>"; };
 		043A724D2477DA4B00E15B56 /* SwipeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDescriptionView.swift; sourceTree = "<group>"; };
-		043A724F2477FB3C00E15B56 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		045E2235245C4D0000CAF2CE /* RandomImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageDataSource.swift; sourceTree = "<group>"; };
 		045E22382460734E00CAF2CE /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		0484DF3324654CE500FFB611 /* BreedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 				045E2235245C4D0000CAF2CE /* RandomImageDataSource.swift */,
 				042DFC3E24640F0100EA1B56 /* BreedDataSource.swift */,
 				0404331E245C41F600EE121A /* Networking */,
-				043A724F2477FB3C00E15B56 /* temp.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -309,7 +306,6 @@
 				042DFC3F24640F0100EA1B56 /* BreedDataSource.swift in Sources */,
 				04043307245C352700EE121A /* SceneDelegate.swift in Sources */,
 				04043322245C423900EE121A /* DataFetcherService.swift in Sources */,
-				043A72502477FB3C00E15B56 /* temp.swift in Sources */,
 				0484DF4124730EC700FFB611 /* UILabel + Extension.swift in Sources */,
 				04043324245C423900EE121A /* NetworkService.swift in Sources */,
 				04043328245C466E00EE121A /* RandomImageModel.swift in Sources */,

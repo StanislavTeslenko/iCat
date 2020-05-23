@@ -61,6 +61,7 @@ class ImageCell: UICollectionViewCell {
 }
 
 //MARK: - Setup Constraints
+
 extension ImageCell {
     
     fileprivate func setupConstraints() {
