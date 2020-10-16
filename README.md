@@ -1,5 +1,5 @@
 # iCat
-Test application for MacPaw macOS/iOS Internship
+Test application for training
 
 ## Description
 Application use public API https://thecatapi.com for two possibilities - show random image and show breed catalog.
